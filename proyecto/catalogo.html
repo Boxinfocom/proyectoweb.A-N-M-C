@@ -1,0 +1,29 @@
+<!-- deja el contenedor vacío o con otros productos -->
+<div class="products-grid"></div>
+
+<script>
+    // Sustituye por los nombres reales que estén en la carpeta imagenes/
+    const empanadasFiles = [
+        'empanadas1.jpg',
+        'empanadas_carne.jpg',
+        'empanadas_pollo.jpg'
+    ];
+
+    const grid = document.querySelector('.products-grid');
+
+    empanadasFiles.forEach((file, i) => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+            <img src="imagenes/${file}" alt="${file}" class="product-image"
+                     onerror="this.src='https://via.placeholder.com/250x200/95a5a6/ffffff?text=${encodeURIComponent(file)}'">
+            <div class="product-info">
+                <p class="product-code">Código: EMP-${('00'+(i+1)).slice(-3)}</p>
+                <h3 class="product-name">Empanada ${i+1}</h3>
+                <p class="product-description">Empanada deliciosa - reemplaza descripción según el tipo.</p>
+                <p class="product-price">$2.50</p>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+</script>
